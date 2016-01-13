@@ -4,9 +4,10 @@ public class Game {
 
 	public static void main(String args[]) {
 
-		int wins=0, losses=0, ties = 0;
+		//int wins=0, losses=0, ties = 0;
 		String clientGesture = null;
 		String serverGesture = "rock";
+		Score score = new Score();
 		
 		do {
 			String prompt = "Will it be rock, paper or scissors?";
@@ -16,20 +17,31 @@ public class Game {
 
 			if (clientGesture.equalsIgnoreCase("rock")) {
 				result = "tie";
-				ties++;
+				score.increaseTies();
 			}
 
 			if (clientGesture.equalsIgnoreCase("scissors")) {
 				result = "lose";
-				losses = losses + 1;
+				score.increaseLosses();
 			}
 
 			if (clientGesture.equalsIgnoreCase("paper")) {
 				result = "win";
-				wins++;
+				score.increaseWins();
 			}
 			JOptionPane.showMessageDialog(null, result);
-			System.out.println("\nWins: " + wins + "\tLosses: "+ losses + "\tTies: " + ties);
+			
+			Game.displayResults(score);
+			
 		} while (!clientGesture.equalsIgnoreCase("q"));
 	}
+	
+	public static void displayResults(Score s){
+		System.out.println("\nWins: " + s.getWins()
+		+ "\tLosses: "+ s.getLosses()
+			+ "\tTies: " + s.getTies());
+		
+	}
+	
+	
 }
