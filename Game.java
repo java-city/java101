@@ -3,7 +3,7 @@ import javax.swing.*;
 public class Game {
 
 	public static void main(String args[]) {
-
+		//This is a cool game!
 		//int wins=0, losses=0, ties = 0;
 		String clientGesture = null;
 		String serverGesture = "rock";
